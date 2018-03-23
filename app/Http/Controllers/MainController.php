@@ -31,6 +31,6 @@ class MainController extends Controller
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($messageData));
-        curl_exec();
+        curl_exec($ch);
     }
 }
