@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Bot\Webhook\Messaging;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -19,7 +20,6 @@ class BotHandler implements ShouldQueue
      */
     public function __construct()
     {
-        //
     }
 
     /**
