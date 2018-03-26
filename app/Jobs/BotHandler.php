@@ -42,7 +42,7 @@ class BotHandler implements ShouldQueue
             } else if ($custom["type"] == Trivia::ANSWER) {
                 $bot->reply(Trivia::checkAnswer($custom["data"]["answer"], $custom['user_id']));
             } else {
-                $bot->reply("The custom array is " . print_r($custom));
+                $bot->reply("The custom array is type=" . $custom["type"] . " data=" . $custom["data"] . " userId=" . $custom["user_id"]);
                 $bot->reply("I don't understand. Try \"new\" for a new question");
             }
         }
