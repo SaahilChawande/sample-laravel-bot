@@ -2,7 +2,6 @@
 
 namespace App\Bot\Webhook;
 
-use function foo\func;
 
 class Message   {
     private $mId;
