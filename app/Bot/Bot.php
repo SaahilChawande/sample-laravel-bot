@@ -46,8 +46,8 @@ class Bot
 
     public function reply($data)
     {
-        if (method_exists($data, "toMessengerMessage")) {
-            $data = $data->toMessengerMessage();
+        if (method_exists($data, "toMessage")) {
+            $data = $data->toMessage();
         } else if (gettype($data) == "string") {
             $data = ["text" => $data];
         }
