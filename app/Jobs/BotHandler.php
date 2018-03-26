@@ -37,10 +37,10 @@ class BotHandler implements ShouldQueue
             $bot = new Bot($this->messaging);
             $custom = $bot->extractDataFromMessage();
             //a request for a new question
-            if ($custom["type"] == Trivia::$NEW_QUESTION) {
-                $bot->reply(Trivia::getNew());
-            } else if ($custom["type"] == Trivia::$ANSWER) {
-                $bot->reply(Trivia::checkAnswer($custom["data"]["answer"]));
+            if ($custom["type"] == Trivia::NEW_QUESTION) {
+                $bot->reply(Trivia::getNew($custom['user_id']));
+            } else if ($custom["type"] == Trivia::ANSWER) {
+                $bot->reply(Trivia::checkAnswer($custom["data"]["answer"], $custom['user_id']));
             } else {
                 $bot->reply("I don't understand. Try \"new\" for a new question");
             }

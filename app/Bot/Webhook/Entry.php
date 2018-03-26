@@ -24,7 +24,7 @@ class Entry {
         $entries = [];
         $data = $request->input("entry");
         foreach ($data as $datum)   {
-            $entries [] = new Entry($datum);
+            $entries[] = new Entry($datum);
         }
         return $entries;
     }

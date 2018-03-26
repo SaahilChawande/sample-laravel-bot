@@ -1,8 +1,6 @@
 <?php
 namespace App\Bot\Webhook;
 
-use Illuminate\Mail\Message;
-
 class Messaging {
     public static $TYPE_MESSAGE = "message";
 

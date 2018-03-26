@@ -22,27 +22,32 @@ class Bot
         //single letter message means an answer
         if (preg_match("/^(\\w)\$/i", $text, $matches)) {
             return [
-                "type" => Trivia::$ANSWER,
+                "type" => Trivia::ANSWER,
                 "data" => [
                     "answer" => $matches[0]
-                ]
+                ],
+                "user_id" => $this->messaging->getSenderId()
             ];
         } else if (preg_match("/^new|next\$/i", $text, $matches)) {
+            //"new" or "next" requests a new question
             return [
-                "type" => Trivia::$NEW_QUESTION,
-                "data" => []
+                "type" => Trivia::NEW_QUESTION,
+                "data" => [],
+                "user_id" => $this->messaging->getSenderId()
             ];
         }
+        //anything else we don't care
         return [
             "type" => "unknown",
-            "data" => []
+            "data" => [],
+            "user_id" => $this->messaging->getSenderId()
         ];
     }
 
     public function reply($data)
     {
-        if (method_exists($data, "toMessage")) {
-            $data = $data->toMessage();
+        if (method_exists($data, "toMessengerMessage")) {
+            $data = $data->toMessengerMessage();
         } else if (gettype($data) == "string") {
             $data = ["text" => $data];
         }
